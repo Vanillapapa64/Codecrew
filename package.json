@@ -1,0 +1,52 @@
+{
+  "name": "codecc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.9.9",
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
+    "@hookform/resolvers": "^3.10.0",
+    "@octokit/rest": "^21.1.0",
+    "@prisma/client": "^6.2.1",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-popover": "^1.1.5",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.5",
+    "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "flowbite-react": "^0.10.2",
+    "framer-motion": "^11.16.1",
+    "jose": "^5.9.6",
+    "json-web-token": "^3.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.471.1",
+    "mini-svg-data-uri": "^1.4.4",
+    "next": "^15.1.5",
+    "next-auth": "^4.24.11",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^20.17.12",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "postcss": "^8",
+    "prisma": "^6.2.1",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
