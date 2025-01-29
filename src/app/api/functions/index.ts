@@ -104,6 +104,7 @@ export async function existingrepo(x:createprojectinterface,pro:number) {
     }
 }
 export async function createproject(x:createprojectinterface,token:string){
+    console.log("x is ",x)
     try {
         await client.$connect();
         const userExists = await client.user.findUnique({
@@ -114,10 +115,10 @@ export async function createproject(x:createprojectinterface,token:string){
             throw new Error("User does not exist");
         }
         const y:createRepo={
-            name:x.projectName,
+            name:x.repoLink,
             token:token
         }
-        console.log("y is ",y.name)
+        
         await createRepository(y)
         const response=await client.project.create({
             data:{
@@ -136,6 +137,7 @@ export async function createproject(x:createprojectinterface,token:string){
         
         return response.id
     } catch (error) {
+        console.log(error)
         throw new Error("couldn't create project")
     }finally{
         await client.$disconnect()
@@ -199,12 +201,13 @@ export async function fetchprojectdetails(token:string,id:number) {
         if (!username) {
             throw new Error(`username not found.`);
         }
-        const collabs=await getCollaborators(token,username?.githubusername,project.projectName)
+        const collabs=await getCollaborators(token,username?.githubusername,project.repoLink)
+        console.log(collabs)
         const numberofcollaborators=collabs?.length
         const x:viewcommit={
             token:token,
             name:username.githubusername,
-            repo:project.projectName
+            repo:project.repoLink
         }
         const commits= await listCommits(x)
         const techstack=await client.techstackproject.findFirst({

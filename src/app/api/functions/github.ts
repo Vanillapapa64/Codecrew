@@ -83,18 +83,19 @@ export async function getCollaborators(token:string,owner:string,repo:string) {
     const octokit = new Octokit({
         auth:token, // Replace with your GitHub personal access token
       });
-    
+    console.log(token,owner,repo)
       try {
         const response = await octokit.rest.repos.listCollaborators({
           owner,
           repo,
         });
-    
+        console.log("res form gh", response)
         const collaborators = response.data;
         const collaboratorUsernames = collaborators.map((collaborator) => collaborator.login);
     
         return (collaboratorUsernames)
       } catch (error) {
+        console.log(error)
         throw new Error(`Couldn't fetch collaborators: ${error}`);
       }
 }

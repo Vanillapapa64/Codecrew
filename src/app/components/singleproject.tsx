@@ -65,7 +65,9 @@ export default function Singleproject(){
                     }
                 })
                 setProject(response.data)
+                console.log(response.data)
             } catch (error) {
+                console.log("erro",error)
                 console.error(error)
             }
         }
@@ -97,6 +99,7 @@ export default function Singleproject(){
         window.location.reload()
     };
     const newdate= convertToIST(project.details.created)
+    console.log(project)
     return(
         <div className="text-white w-4/5 pt-10 grid grid-cols-2 flex gap-6">
             <div className="grid gap-6 col-span-2 lg:col-span-1">
