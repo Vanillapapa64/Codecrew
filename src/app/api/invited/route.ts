@@ -36,7 +36,7 @@ export  async function POST(req:NextRequest){
         const body:collab={
             owner:owner?.githubusername,
             token:owner?.access_token,
-            repo:project.projectName,
+            repo:project.repoLink,
             username:person.githubusername
         }
         console.log(body)
