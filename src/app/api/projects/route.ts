@@ -30,6 +30,7 @@ export async function POST(req:NextRequest){
             return NextResponse.json({status:201})
         }
         if(choice=='1'){
+            console.log("body is",body)
             const response= await createproject(body,token.access_token)
             return NextResponse.json({projectid:response})
         }else{

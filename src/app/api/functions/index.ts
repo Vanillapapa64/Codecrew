@@ -117,6 +117,7 @@ export async function createproject(x:createprojectinterface,token:string){
             name:x.projectName,
             token:token
         }
+        console.log("y is ",y.name)
         await createRepository(y)
         const response=await client.project.create({
             data:{
