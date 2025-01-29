@@ -20,6 +20,7 @@ export async function createRepository(x:createRepo) {
     const octokit = new Octokit({
         auth: x.token
     });
+    console.log(x)
     try {
         const response = await octokit.repos.createForAuthenticatedUser({
             name: x.name,
