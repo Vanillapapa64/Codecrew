@@ -1,8 +1,10 @@
+import { Suspense } from 'react'
 import { SignInForm } from '../components/signinfrom'
 
 export default function SignInPage() {
     
   return (
+    <Suspense>
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8 -translate-y-10">
         <div className="text-center">
@@ -19,6 +21,7 @@ export default function SignInPage() {
         <SignInForm />
       </div>
     </div>
+    </Suspense>
   )
 }
 

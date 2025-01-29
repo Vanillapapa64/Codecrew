@@ -1,7 +1,7 @@
 
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, Suspense } from 'react'
 import { ProfileForm } from "../components/signup"
 export default function ProfilePage() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -13,6 +13,7 @@ export default function ProfilePage() {
   }, [])
 
   return (
+    <Suspense>
     <div className="relative w-screen h-screen flex justify-center  overflow-hidden bg-black text-white">
       <video
         ref={videoRef}
@@ -27,6 +28,7 @@ export default function ProfilePage() {
         <ProfileForm />
       </div>
     </div>
+    </Suspense>
   )
 }
 
