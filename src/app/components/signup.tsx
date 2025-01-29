@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { MultiSelect, type Option } from "@/components/ui/multiselect"
+import axios from "axios"
 
 const formSchema = z.object({
   name: z.string().min(5, {
@@ -63,26 +64,31 @@ export function ProfileForm() {
       techstack: [],
     },
   })
-
+  const baseurl=process.env.NEXT_PUBLIC_BASE_URL
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log('hi')
+    if(baseurl===undefined){
+      return
+    }
     try {
-      const response = await fetch("/api/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          code: code,
-        },
-        body: JSON.stringify(values),
-      })
-      if (!response.ok) {
-        const errorData = await response.json()
-        console.error("Signup failed:", errorData.message)
-        alert("Signup failed: " + errorData.message)
+      const response = await axios.post(
+        `${baseurl}/api/user`,
+        values, // Axios automatically sets Content-Type to application/json for objects
+        {
+          headers: {
+            "Content-Type": "application/json",
+            code: code,
+          },
+        }
+      );
+      if (!response) {
+        const errorData = await response
+        console.error("Signup failed:", errorData)
+        alert("Signup failed: " + errorData)
         return
       }
 
-      const data = await response.json()
+      const data = await response.data
       console.log("Signup successful:", data)
       router.push("/api/auth/signin")
     } catch (error) {
