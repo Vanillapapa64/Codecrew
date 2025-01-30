@@ -30,9 +30,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head >
+<title>CodeCrew: An innovative Coding collaboration platform</title>
+<meta name="title" content="CodeCrew: An innovative Coding collaboration platform" />
+<meta name="description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds. " />
+<link rel="icon" href="/logo.png" type="image/png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://codecrew.navkirat.in/" />
+<meta property="og:title" content="CodeCrew: An innovative Coding collaboration platform" />
+<meta property="og:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds. " />
+<meta property="og:image" content="https://codecrew.navkirat.in/logo.png" />
+
+
+<meta property="twitter:card" content="" />
+<meta property="twitter:url" content="https://codecrew.navkirat.in/" />
+<meta property="twitter:title" content="CodeCrew: An innovative Coding collaboration platform" />
+<meta property="twitter:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds. " />
+<meta property="twitter:image" content="https://codecrew.navkirat.in/logo.png" />
+
+</head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
         
         <Providers>
         <Appbar />
