@@ -37,6 +37,7 @@ export default function Singleproject(){
     const { data: session, status } = useSession();
     const router=useRouter()
     const [already,setalready]=useState(false)
+    const [loading, setLoading] = useState(true);
     const [project, setProject] = useState<Project>({
         details: {
           nameofproject: '',
@@ -69,6 +70,8 @@ export default function Singleproject(){
             } catch (error) {
                 console.log("erro",error)
                 console.error(error)
+            }finally {
+                setLoading(false);
             }
         }
         const fetchsent=async()=>{
@@ -101,7 +104,14 @@ export default function Singleproject(){
     const newdate= convertToIST(project.details.created)
     console.log(project)
     return(
-        <div className="text-white w-4/5 pt-10 grid grid-cols-2 flex gap-6">
+        <div className="w-screen flex justify-center h-screen">
+            {loading?(
+                <div className="flex  justify-center items-center -translate-y-12">
+                <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
+                <div className="text-white pl-4">Wait while we fetch the latest data...</div>
+            </div>
+            ):(
+                <div className="text-white w-4/5 pt-10 grid grid-cols-2 flex gap-6">
             <div className="grid gap-6 col-span-2 lg:col-span-1">
                 <div className="text-7xl font-black">{project.details.nameofproject}</div>
                 <div className="text-xl flex"><div className="font-semibold">Created At:</div>{newdate}</div>
@@ -165,6 +175,9 @@ export default function Singleproject(){
                         </li>
                     ))}</ul>
             </div>
+        </div>
+            )}
+            
         </div>
     )
 }
