@@ -122,9 +122,17 @@ export default function Singleproject(){
             <div className="text-start grid col-span-2 lg:col-span-1 content-between">
                 <div>
                 <div className="text-4xl font-extrabold">Collaborators</div>
-                <ul>{project.details.collaborators.map((name,index)=>(
-                    <li className="p-2 text-lg" key={index}><div>{name}</div></li>
-                ))}</ul>
+                <ul>
+                {project.details.collaborators && project.details.collaborators.length > 0 ? (
+                    project.details.collaborators.map((name, index) => (
+                    <li className="p-2 text-lg" key={index}>
+                        <div>{name}</div>
+                    </li>
+                    ))
+                ) : (
+                    <li className="p-2 text-lg text-gray-500">No collaborators available</li>
+                )}
+                </ul>
                 </div>
                 <div >
                 {already ? (
@@ -168,12 +176,19 @@ export default function Singleproject(){
             <div className="col-span-2 w-full h-1 bg-white"></div>
             <div className="col-span-2 text-center text-lg">
                 <div className="text-4xl font-extrabold">Commits:</div>
-                <ul >{project.details.commits.map((commit, index) => (
-                        <li className="p-4" key={index}>
-                            <div><strong>Committer:</strong> {commit.commit?.committer.name}</div>
-                            <div><strong>Message:</strong> {commit.commit?.message}</div>
-                        </li>
-                    ))}</ul>
+                <ul>
+                {project.details.commits && project.details.commits.length > 0 ? (
+                    project.details.commits.map((commit, index) => (
+                    <li className="p-4" key={index}>
+                        <div><strong>Committer:</strong> {commit.commit?.committer?.name || "Unknown"}</div>
+                        <div><strong>Message:</strong> {commit.commit?.message || "No message available"}</div>
+                    </li>
+                    ))
+                ) : (
+                    <li className="p-4 text-gray-500">No commits available</li>
+                )}
+                </ul>
+
             </div>
         </div>
             )}

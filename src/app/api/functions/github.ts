@@ -46,7 +46,10 @@ export async function listCommits(x:viewcommit) {
             repo:x.repo,  // Repository name
         });
         return commits.data
-    } catch (error) {
+    } catch (error:any) {
+        if (error.status === 409) {
+            return null;
+        }
         throw new Error("couldn't get repo")
     }
 }

@@ -215,6 +215,7 @@ export async function fetchprojectdetails(token:string,id:number) {
                 projectid:project.id
             }
         })
+        console.log("commits",commits)
         return {
             nameofproject:project.projectName,
             description:project.projectDesc,

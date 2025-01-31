@@ -24,7 +24,7 @@ export  async function GET(req:NextRequest){
             return NextResponse.json({message:"No token found"})
         }
         const response=await fetchprojectdetails(token.access_token,projectid)
-        console.log(response)
+        console.log("hululalalla",response.commits)
         return NextResponse.json({details:response})
     } catch (error) {
         return NextResponse.json({message:error,status:500})
