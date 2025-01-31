@@ -37,6 +37,7 @@ export interface viewcommit{
     repo:string
 }
 export async function listCommits(x:viewcommit) {
+    console.log(x.token)
     const octokit = new Octokit({
         auth: x.token
     });
@@ -45,6 +46,7 @@ export async function listCommits(x:viewcommit) {
             owner:x.name, // Repository owner username
             repo:x.repo,  // Repository name
         });
+        console.log(commits)
         return commits.data
     } catch (error:any) {
         if (error.status === 409) {

@@ -31,7 +31,7 @@ export async function POST(req:NextRequest){
         }
         if(choice=='1'){
             console.log("body is",body)
-            const response= await createproject(body.formattedData,token.access_token)
+            const response= await createproject(body.formattedData,token)
             return NextResponse.json({projectid:response})
         }else{
             const progress= parseInt(req.headers.get('progress')||"")

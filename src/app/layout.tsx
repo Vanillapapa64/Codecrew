@@ -5,7 +5,7 @@ import "./globals.css";
 
 import { Providers } from "./components/providers";
 import { Appbar } from "./App";
-import { usePathname } from "next/navigation";
+
 
 
 const geistSans = Geist({
@@ -21,10 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CodeCrew: An innovative Coding collaboration platform",
   description: "Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds",
-  keywords: ["Coding", "Programming", "Teammates", "Projects"],
-  openGraph: {
-    images: 'https://codecrew.navkirat.in/logo.png',
-  }
+  keywords: ["Coding", "Programming", "Teammates", "Projects"]
 };
 
 export default function RootLayout({
@@ -34,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+      <head><link rel="shortcut icon" href="/favicon.ico" /></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

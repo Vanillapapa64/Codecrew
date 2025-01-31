@@ -3,6 +3,22 @@ import type {  createprojectinterface, usercreate } from "@/types";
 import { collab, createRepo, createRepository, getCollaborators, getpersonalaccesstoken, inviteCollaborator, listCommits, viewcommit } from "./github";
 import { NextResponse } from "next/server";
 import axios from "axios";
+import bcrypt from "bcrypt"
+import crypto from "crypto";
+import { error } from "console";
+import CryptoJS from 'crypto-js';
+const SECRET_KEY = process.env.SECRET_KEY as string;
+const IV_LENGTH = 16; 
+function encrypt(text:string):string {
+    const ciphertext = CryptoJS.AES.encrypt(text, SECRET_KEY).toString();
+    return ciphertext;
+}
+  
+function decrypt(ciphertext:string):string {
+    const bytes = CryptoJS.AES.decrypt(ciphertext, SECRET_KEY);
+    const originalText = bytes.toString(CryptoJS.enc.Utf8);
+    return originalText;
+}
 export async function createuser(x:usercreate,code:string) {
     try{
         await client.$connect();
@@ -12,15 +28,17 @@ export async function createuser(x:usercreate,code:string) {
                 Authorization: `Bearer ${access_token}`,
             },
         });
+        const hashedPassword = await bcrypt.hash(x.password, 10)
+        const encryptedToken= encrypt(access_token)
         const username=userResponse.data.login
         const response=await client.user.create({
             data:{
                 name:x.name,
-                password:x.password,
+                password:hashedPassword,
                 university:x.university,
                 course:x.course,
                 githubusername:username,
-                access_token:access_token
+                access_token:encryptedToken
             }
         })
         if (x.techstack && x.techstack.length > 0) {
@@ -34,8 +52,10 @@ export async function createuser(x:usercreate,code:string) {
             );
             await Promise.all(techStackPromises);
         }
+        console.log(response)
         return {id:response.id,name:response.name}
     }catch(err){
+        console.log(err)
         throw new Error("couldn't create user")
     }finally{
         await client.$disconnect()
@@ -342,7 +362,7 @@ export async function accept(userid:number,projectid:number,inputs:collab) {
 export async function fetchaccesstoken(userid:number){
     try {
         await client.$connect()
-        return await client.user.findFirst({
+        const encrypted= await client.user.findFirst({
                     where:{
                         id:userid
                     },
@@ -350,7 +370,15 @@ export async function fetchaccesstoken(userid:number){
                         access_token:true
                     }
                 });
+        if(!encrypted){
+            return null
+        }
+        console.log(encrypted.access_token)
+        const hii=decrypt(encrypted.access_token)
+        console.log("it is",hii)
+        return hii
     } catch (error) {
+        console.log(error)
         throw new Error("Couldn't update invited");
     }finally{
         await client.$disconnect();

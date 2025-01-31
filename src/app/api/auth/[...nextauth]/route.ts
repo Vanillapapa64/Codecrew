@@ -1,6 +1,7 @@
 import NextAuth, { DefaultSession } from "next-auth"
 import client from "../../db"
 import CredentialsProvider from "next-auth/providers/credentials"
+import bcrypt from "bcrypt";
 declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
@@ -25,13 +26,17 @@ const handler = NextAuth({
           }
           try {
             await client.$connect();
+            
             const userid=await client.user.findFirst({
               where:{
-                name:credentials.username,
-                password:credentials.password
+                name:credentials.username
               }
             })
             if(!userid){
+              return null
+            }
+            const isPasswordValid = await bcrypt.compare(credentials.password, userid.password)
+            if(!isPasswordValid){
               return null
             }
             return {
