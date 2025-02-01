@@ -7,6 +7,9 @@ import bcrypt from "bcrypt"
 import crypto from "crypto";
 import { error } from "console";
 import CryptoJS from 'crypto-js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY as string;
 const IV_LENGTH = 16; 
 function encrypt(text:string):string {
@@ -20,7 +23,10 @@ function decrypt(ciphertext:string):string {
     return originalText;
 }
 export async function createuser(x:usercreate,code:string) {
-    try{
+    try{const SECRET_KEY = process.env.SECRET_KEY;
+        if (!SECRET_KEY) {
+            throw new Error("SECRET_KEY is not defined in environment variables");
+        }
         await client.$connect();
         const access_token= await getpersonalaccesstoken(code)
         const userResponse = await axios.get("https://api.github.com/user", {
