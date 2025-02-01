@@ -20,23 +20,53 @@ const handler = NextAuth({
           username: { label: 'email', type: 'text', placeholder: '' },
           password: { label: 'password', type: 'password', placeholder: '' },
         },
+        
         async authorize(credentials: any) {
+          console.log("🟢 authorize() function is running...");
+          console.log("Received credentials:", credentials);
+          if (!credentials || !credentials.username || !credentials.password) {
+            console.log("❌ Missing credentials");
+            return null;
+          }
           if(!credentials){
             return null
           }
-          try {
-            await client.$connect();
-            
+          await client.$connect();
+            console.log("🔍 Searching for user:", credentials.username.trim());
+            const username:string=credentials.username
             const userid=await client.user.findFirst({
               where:{
-                name:credentials.username
+                name:username.trim()
+              }
+            })
+            if(!userid){
+              console.log("❌ User not found in database");
+              return null
+            }
+          console.log("Stored password hash:", userid?.password);
+          console.log("Entered password:", credentials.password);
+          const pass:string=credentials.password
+          const isPasswordValid = await bcrypt.compare(pass.trim(), userid.password);
+          const hash=await bcrypt.hash(credentials.password,10)
+          console.log("After hashing",hash)
+          console.log("Password match:", isPasswordValid);
+          try {
+            await client.$connect();
+            const username:string=credentials.username
+            const userid=await client.user.findFirst({
+              where:{
+                name:username.trim()
               }
             })
             if(!userid){
               return null
             }
+            console.log("cred",credentials.password)
+            console.log("user",userid.password)
             const isPasswordValid = await bcrypt.compare(credentials.password, userid.password)
+
             if(!isPasswordValid){
+              
               return null
             }
             return {

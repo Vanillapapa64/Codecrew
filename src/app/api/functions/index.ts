@@ -34,12 +34,12 @@ export async function createuser(x:usercreate,code:string) {
                 Authorization: `Bearer ${access_token}`,
             },
         });
-        const hashedPassword = await bcrypt.hash(x.password, 10)
+        const hashedPassword = await bcrypt.hash(x.password.trim(), 10)
         const encryptedToken= encrypt(access_token)
         const username=userResponse.data.login
         const response=await client.user.create({
             data:{
-                name:x.name,
+                name:x.name.trim(),
                 password:hashedPassword,
                 university:x.university,
                 course:x.course,
