@@ -20,9 +20,26 @@ module.exports = {
 			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 		  },
   		animation: {
+			typing: "typing 2s steps(20) infinite alternate, blink .7s infinite",
   			shimmer: 'shimmer 2s linear infinite'
   		},
   		keyframes: {
+			typing: {
+				"0%": {
+				  width: "0%",
+				  visibility: "hidden"
+				},
+				"100%": {
+				  width: "58%"
+				}},
+			blink: {
+				"50%": {
+					borderColor: "transparent"
+				},
+				"100%": {
+					borderColor: "white"
+				}  
+				},
   			shimmer: {
   				from: {
   					backgroundPosition: '0 0'
@@ -119,3 +136,5 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
+
+

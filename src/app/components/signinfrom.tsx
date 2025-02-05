@@ -29,7 +29,7 @@ export function SignInForm() {
     if (res?.error) {
       setError('Invalid username or password');
     } else {
-      router.push("/");
+      router.push("/projects");
     }
   };
   const togglePasswordVisibility = () => setShowPassword(!showPassword)
