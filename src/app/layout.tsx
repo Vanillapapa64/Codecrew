@@ -43,6 +43,7 @@ export default function RootLayout({
         <meta name="og:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds"/>
         <meta name="og:image" content="/ogimage.png"/>
         <meta name="twitter:card" content="summary_large_image"/>
+        <meta property="og:image:secure_url" content="https://codecrew.navkirat.in/ogimage.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
