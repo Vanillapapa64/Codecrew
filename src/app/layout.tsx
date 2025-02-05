@@ -42,6 +42,7 @@ export default function RootLayout({
         <meta name="og:title" content="CodeCrew: An innovative Coding collaboration platform"/>
         <meta name="og:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds"/>
         <meta name="og:image" content="/ogimage.png"/>
+        <meta name="twitter:card" content="summary_large_image"/>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
