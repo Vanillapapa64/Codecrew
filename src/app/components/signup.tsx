@@ -108,7 +108,7 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Navkirat Singh" {...field} />
+                <Input placeholder="Eg: Navkirat Singh" {...field} />
               </FormControl>
               <FormDescription>This is your public display name.</FormDescription>
               <FormMessage />
