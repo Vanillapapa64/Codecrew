@@ -38,6 +38,7 @@ model Project {
   projectDesc String
   repoLink    String
   createdAt   DateTime            @default(now())
+  need String
   techstack   Techstackproject[]
   progess Int
   invitedUsers InvitedUser[]

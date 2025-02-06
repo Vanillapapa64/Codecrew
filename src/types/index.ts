@@ -12,7 +12,8 @@ export interface createprojectinterface{
     projectName: string;
     projectDesc: string;
     repoLink: string;
-    techstack:string[]
+    techstack:string[];
+    need:string
 }
 export interface updatetechstack{
     userid:number,

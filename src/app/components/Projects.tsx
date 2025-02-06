@@ -49,7 +49,7 @@ export default function Projects() {
         <div className="flex flex-col items-center">
             {Array.isArray(projects) && projects.length > 0 ? (
                     projects.map((project: card, index: number) => (
-                        <Projectcard key={project.id} id={project.id} projectDesc={project.projectDesc} projectName={project.projectName} createdAt={project.createdAt} progess={project.progess} repoLink={project.repoLink}/>
+                        <Projectcard key={project.id} id={project.id} projectDesc={project.projectDesc} projectName={project.projectName} createdAt={project.createdAt} progess={project.progess} repoLink={project.repoLink} need={project.need}/>
                     ))
                 ) : (
                     <p>No projects found.</p>

@@ -32,7 +32,8 @@ const existingProjectSchema = z.object({
     projectName: z.string().min(1, "Project name is required"),
     projectDesc: z.string().min(1, "Project description is required"),
     repoName: z.string().min(1, "Repository name is required"),
-    techstack: z.array(z.string()).min(1, "Select at least one technology")
+    techstack: z.array(z.string()).min(1, "Select at least one technology"),
+    need: z.string().min(1, "required"),
 })
 
 type FormData = z.infer<typeof existingProjectSchema>;
@@ -48,7 +49,8 @@ export default function NewProjectForm() {
             projectName: "",
             projectDesc: "",
             repoName: "",
-            techstack: []
+            techstack: [],
+            need:""
         },
     })
 
@@ -68,6 +70,7 @@ export default function NewProjectForm() {
                 projectDesc: data.projectDesc,
                 repoLink: data.repoName,
                 techstack: data.techstack,
+                need:data.need
             };
 
             console.log("Formatted data:", formattedData);
@@ -151,7 +154,19 @@ export default function NewProjectForm() {
                                 </FormItem>
                             )}
                         />
-
+                        <FormField
+                            control={form.control}
+                            name="need"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>What Role do you require?</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Enter role" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <FormField
                             control={form.control}
                             name="techstack"

@@ -117,7 +117,8 @@ export async function existingrepo(x:createprojectinterface,pro:number) {
                       tech: tech, // Add each tech as a separate entry
                     }))},
                 createdAt:new Date(),
-                progess:pro
+                progess:pro,
+                need:x.need
             }
         })
         console.log(response)
@@ -157,7 +158,8 @@ export async function createproject(x:createprojectinterface,token:string){
                       tech: tech, // Add each tech as a separate entry
                     }))},
                 createdAt:new Date(),
-                progess:0
+                progess:0,
+                need:x.need
             }
         })
         

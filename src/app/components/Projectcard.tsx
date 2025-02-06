@@ -10,6 +10,7 @@ export interface card{
     repoLink: string;
     createdAt: string;
     progess: number;
+    need:string
 }
 export default function Projectcard(inputs:card){
     const router= useRouter()
@@ -21,6 +22,7 @@ export default function Projectcard(inputs:card){
             <div className="font-extrabold text-2xl lg:text-5xl py-2">{inputs.projectName}</div>
             <div className="font-semibold lg:text-xl pb-2">Description: {inputs.projectDesc.slice(0, 80) + "..."}</div>
             <div>{newdate}</div>
+            <div className="font-bold pt-2">Required: {inputs.need}</div>
         </div>
         <div className="grid md:justify-items-end">
             <div className="font-semibold text-lg md:text-xl pb-4">Repository: {inputs.repoLink}</div>
