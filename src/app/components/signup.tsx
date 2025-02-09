@@ -137,11 +137,11 @@ export function ProfileForm() {
               <FormControl>
                 <select
                   {...field}
-                  className="block bg-transparent w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+                  className="block bg-transparent  w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                 >
-                  <option value="">Select a university</option>
+                  <option className="text-black" value="">Select a university</option>
                   {universities.map((uni) => (
-                    <option key={uni.value} value={uni.value}>
+                    <option className="text-black" key={uni.value} value={uni.value}>
                       {uni.label}
                     </option>
                   ))}
@@ -160,11 +160,11 @@ export function ProfileForm() {
               <FormControl>
                 <select
                   {...field}
-                  className="block bg-transparent w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+                  className="block bg-transparent  dark:text-white w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                 >
-                  <option value="">Select a course</option>
+                  <option className="text-black" value="">Select a course</option>
                   {courses.map((course) => (
-                    <option key={course.value} value={course.value}>
+                    <option className="text-black" key={course.value} value={course.value}>
                       {course.label}
                     </option>
                   ))}

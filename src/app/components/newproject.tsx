@@ -31,7 +31,16 @@ const techstack: Option[] = [
 const existingProjectSchema = z.object({
     projectName: z.string().min(1, "Project name is required"),
     projectDesc: z.string().min(1, "Project description is required"),
-    repoName: z.string().min(1, "Repository name is required"),
+    repoName: z
+    .string()
+    .min(1, "Repository name is required")
+    .regex(
+      /^(?![-.])[a-z0-9._-]+(?<![-.])$/,
+      "Only lowercase letters, numbers, '-', '_', and '.' allowed. No spaces. Cannot start or end with '.' or '-'"
+    )
+    .refine((val) => !val.includes(" "), {
+      message: "Spaces are not allowed",
+    }),
     techstack: z.array(z.string()).min(1, "Select at least one technology"),
     need: z.string().min(1, "required"),
 })

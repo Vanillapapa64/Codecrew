@@ -147,6 +147,13 @@ export default function ExistingProjectForm() {
                         <FormField
                             control={form.control}
                             name="repoName"
+                            rules={{
+                                pattern: {
+                                value: /^(?![-.])[a-z0-9_.-]+(?<![-.])$/,
+                                message:
+                                    "Only lowercase letters, numbers, '-', '_', and '.' allowed. Cannot start or end with '.' or '-'",
+                                },
+                            }}
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Repository Name</FormLabel>
