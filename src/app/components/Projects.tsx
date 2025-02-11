@@ -16,6 +16,7 @@ export default function Projects() {
     console.log(session)
     const router=useRouter()
     const [projects,setprojects]=useState([])
+    const [loading, setLoading] = useState(true);
     useEffect(()=>{
         if(status==="loading"){return }
         if(!session?.user.id||!baseurl){router.push('/signin')}
@@ -41,19 +42,30 @@ export default function Projects() {
                 }
             } catch (error) {
                 console.error(error)
+            }finally{
+                setLoading(false);
             }
         }
         fetchprojects()
     },[session,status,router])
     return(
-        <div className="flex flex-col items-center">
-            {Array.isArray(projects) && projects.length > 0 ? (
+        <div>
+            {loading?(
+                <div className="flex  justify-center items-center ">
+                <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
+                <div className="text-white pl-4">Wait while we fetch the latest data...</div>
+            </div>
+            ):(
+                <div className="flex flex-col items-center">
+                {Array.isArray(projects) && projects.length > 0 ? (
                     projects.map((project: card, index: number) => (
                         <Projectcard key={project.id} id={project.id} projectDesc={project.projectDesc} projectName={project.projectName} createdAt={project.createdAt} progess={project.progess} repoLink={project.repoLink} need={project.need}/>
                     ))
                 ) : (
                     <p>No projects found.</p>
                 )}
+                </div>
+            )}
         </div>
     )
 }

@@ -20,7 +20,7 @@ export const Appbar = () => {
 
       {/* Centered Logo */}
       <Link
-        href="/"
+        href="/projects"
         className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 justify-self-center col-span-1"
       >
         CODECREW
