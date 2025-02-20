@@ -58,7 +58,7 @@ export default function Own() {
           ))}
         </ul>
       ) : (
-        <p>No projects found.</p>
+        <p className="text-white">No projects found.</p>
       )}
     </div>
   );

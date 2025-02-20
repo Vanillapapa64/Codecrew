@@ -33,7 +33,7 @@ export default async function Page() {
         </div>
         <div className="lg:col-span-1 ">
         <Typewriter
-          text="What is CodeCrew?"
+          text="Collaborate for Projects"
           typingSpeed={40}
           deletingSpeed={30}
           delayBeforeDelete={2000}

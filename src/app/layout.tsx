@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="twitter:image" content="/ogimage.png" />
+        <meta name="twitter:image" content="https://codecrew.navkirat.in/ogimage.png" />
         <meta name="twitter:title" content="CodeCrew: An innovative Coding collaboration platform"/>
         <meta name="twitter:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds"/>
         <meta name="og:title" content="CodeCrew: An innovative Coding collaboration platform"/>
