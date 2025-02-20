@@ -35,16 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="twitter:image" content="https://codecrew.navkirat.in/ogimage.png" />
-        <meta name="twitter:title" content="CodeCrew: An innovative Coding collaboration platform"/>
-        <meta name="twitter:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds"/>
-        <meta name="og:title" content="CodeCrew: An innovative Coding collaboration platform"/>
-        <meta name="og:description" content="Create/View/Collaborate in Project that matches your Techstack. Find fellow Nerds"/>
-        <meta name="og:image" content="/ogimage.png"/>
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta property="og:image:secure_url" content="https://codecrew.navkirat.in/ogimage.png" />
-      </head>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="CodeCrew: An innovative Coding collaboration platform"/>
+    <meta name="twitter:description" content="Create/View/Collaborate in Projects that match your Tech Stack. Find fellow Nerds."/>
+    <meta name="twitter:image" content="https://codecrew.navkirat.in/ogimage.png"/>
+
+    <meta property="og:title" content="CodeCrew: An innovative Coding collaboration platform"/>
+    <meta property="og:description" content="Create/View/Collaborate in Projects that match your Tech Stack. Find fellow Nerds."/>
+    <meta property="og:image" content="https://codecrew.navkirat.in/ogimage.png"/>
+    <meta property="og:image:secure_url" content="https://codecrew.navkirat.in/ogimage.png"/>
+</head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
